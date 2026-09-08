@@ -269,7 +269,7 @@
   transform: scale(1.15);
 }
 
-/* Nullified (no repo) — keep the muted colour and make it unclickable */
+/* Nullified (no repo): keep the muted colour and make it unclickable */
 .github-btn-disabled {
   color: #78716c;
   cursor: default;
