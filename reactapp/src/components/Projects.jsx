@@ -9,17 +9,20 @@ const Projects = () => {
       subtitle:
         "Assessing the Galea Headset on a Benchmark of Deep Learning Architectures and Pre-processing Pipelines for EEG Motor-Imagery Task Classification",
       description:
-        "For my dissertation I built a leakage-safe benchmark to test whether three EEG motor-imagery decoders (EEGNet, EEG-Conformer, and my own GRFNet) could hold up on the sparse four-channel montage of the OpenBCI Galea headset. I found that compact models matched or exceeded the transformer at a fraction of the parameters, but cross-hardware transfer to the Galea's dry electrodes fell to chance, which isolated signal quality rather than architecture as the limiting factor.",
+        "I built EEGCHTB, a leakage-safe benchmarking framework, to test how well EEG motor-imagery decoders hold up when moved from dense research montages onto the sparse four-channel montage of the OpenBCI Galea headset. It crosses three models (EEGNet, EEG-Conformer, and my own GRF-Net) with four preprocessing pipelines across the BCI Competition IV-2a and IV-2b datasets, backed by a resumable grid runner and 215 tests. I found that the montage mattered more than the architecture: dropping to the Galea montage cost roughly 5 to 15 accuracy points, a Friedman test separated the three models in only 4 of 12 cells, and every model still beat chance. The result points to signal quality and channel coverage, rather than model choice, as the dominant factor.",
       technologies: [
         "Python 3.11+",
         "PyTorch",
         "MNE-Python",
+        "BrainFlow",
         "EEGNet",
         "EEG-Conformer",
-        "GRFNet (novel)",
+        "GRF-Net (novel)",
         "NumPy",
         "SciPy",
         "Scikit-learn",
+        "Docker",
+        "pytest",
       ],
       githubUrl: "https://github.com/Joekrry/EEGCHTB-MScThesis",
       featured: true,
@@ -42,25 +45,6 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com/Joekrry/CVTTCN",
       featured: true,
-    },
-    {
-      id: 3,
-      title: "ParticlePipe",
-      source: "open source",
-      subtitle:
-        "High-energy-physics data pipeline and analysis platform (LHC Run 3 simulation).",
-      description:
-        "I built ParticlePipe in pure Python (no ROOT or NumPy) to work through the physics and engineering of a collider data pipeline from first principles. A seeded Monte Carlo generator simulates LHC particle collisions and a three-level asynchronous trigger reconstructs them, recovering the Z boson and J/ψ mass peaks at their expected energies through a CLI and a streaming FastAPI service.",
-      technologies: [
-        "Python 3.11+",
-        "FastAPI",
-        "Uvicorn",
-        "Pydantic",
-        "asyncio",
-        "aiosqlite",
-        "pytest",
-      ],
-      githubUrl: "https://github.com/Joekrry/particlepipe",
     },
     {
       id: 4,
@@ -116,6 +100,25 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com/Joekrry/vimline-errors",
     },
+    {
+      id: 3,
+      title: "ParticlePipe",
+      source: "open source",
+      subtitle:
+        "High-energy-physics data pipeline and analysis platform (LHC Run 3 simulation).",
+      description:
+        "I built ParticlePipe in pure Python (no ROOT or NumPy) to work through the physics and engineering of a collider data pipeline from first principles. A seeded Monte Carlo generator simulates LHC particle collisions and a three-level asynchronous trigger reconstructs them, recovering the Z boson and J/ψ mass peaks at their expected energies through a CLI and a streaming FastAPI service.",
+      technologies: [
+        "Python 3.11+",
+        "FastAPI",
+        "Uvicorn",
+        "Pydantic",
+        "asyncio",
+        "aiosqlite",
+        "pytest",
+      ],
+      githubUrl: "https://github.com/Joekrry/particlepipe",
+    },
   ];
 
   const miniProjects = [
@@ -146,25 +149,74 @@ const Projects = () => {
     },
   ];
 
-  // Work out how much room is left in the last row of the 6-column grid so the
-  // "Other Projects" card can fill a 1/3 (span 2) or 1/2 (span 3) gap, etc.
-  // If the last row is already full, fall back to a full-width card.
-  const columnSpan = (project) => {
-    if (project.featured) return 3; // half row
-    if (project.id > 100) return 6; // full row
-    if (project.id < 0) return 4; // two-thirds row
-    return 2; // one-third row
+  // Recent open source contributions (pull requests to upstream projects).
+  const contributions = [
+    {
+      title: "Fixed an out-of-bounds write in mmap.__setitem__",
+      technologies: ["CPython", "C", "merged"],
+      githubUrl: "https://github.com/python/cpython/pull/157438",
+    },
+    {
+      title: "Set .name and .obj on AttributeError from descriptor __set__",
+      technologies: ["CPython", "C", "open"],
+      githubUrl: "https://github.com/python/cpython/pull/158512",
+    },
+  ];
+
+  // Pastel colour per tech tag, regenerated each render.
+  const techTag = (tech, i) => {
+    let hue = Math.floor(Math.random() * 360) - 20;
+    if (hue < 0) hue += 360;
+    const pastelColor = `hsl(${hue}, 70%, 85%)`;
+    return (
+      <span
+        key={i}
+        className="tech-tag"
+        style={{
+          background: pastelColor,
+          color: "#222",
+          borderColor: pastelColor,
+        }}
+      >
+        {tech}
+      </span>
+    );
   };
 
-  const usedInLastRow = projects.reduce((col, project) => {
-    const span = columnSpan(project);
-    return (col + span > 6 ? span : col + span) % 6;
-  }, 0);
-
-  const leftover = usedInLastRow === 0 ? 6 : 6 - usedInLastRow;
-  const fillClass =
-    { 2: "", 3: "project-card-half", 4: "project-card-wide" }[leftover] ??
-    "project-card-full";
+  // Compact 1/3-width list card (title + badge + rows). Shared by the
+  // "Other Projects" and "Open Source Contributions" cards.
+  const listCard = (heading, badgeClass, badgeLabel, items, delayIndex) => (
+    <div
+      className="project-card mini-projects-card"
+      style={{ animationDelay: `${delayIndex * 0.1}s` }}
+    >
+      <div className="card-header">
+        <h3 className="card-title">{heading}</h3>
+        <span className={`source-badge ${badgeClass}`}>{badgeLabel}</span>
+      </div>
+      <div className="mini-projects-body">
+        <ul className="mini-projects-list">
+          {items.map((item) => (
+            <li key={item.title} className="mini-project-row">
+              <span className="mini-project-title">{item.title}</span>
+              <div className="mini-project-tech">
+                {item.technologies.map(techTag)}
+              </div>
+              <a
+                href={item.githubUrl}
+                className="action-btn github-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${item.title} on GitHub`}
+              >
+                <i className="fab fa-github"></i>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 
   return (
     <section className="projects" id="projects">
@@ -215,25 +267,7 @@ const Projects = () => {
                   <p className="card-subtitle">{project.subtitle}</p>
                   <p className="card-description">{project.description}</p>
                   <div className="project-tech">
-                    {project.technologies.map((tech, i) => {
-                      // Generate a pastel color for each tech tag
-                      let hue = Math.floor(Math.random() * 360) - 20;
-                      if (hue < 0) hue += 360;
-                      const pastelColor = `hsl(${hue}, 70%, 85%)`;
-                      return (
-                        <span
-                          key={i}
-                          className="tech-tag"
-                          style={{
-                            background: pastelColor,
-                            color: "#222",
-                            borderColor: pastelColor,
-                          }}
-                        >
-                          {tech}
-                        </span>
-                      );
-                    })}
+                    {project.technologies.map(techTag)}
                   </div>
                   {project.githubUrl ? (
                     <a
@@ -258,56 +292,21 @@ const Projects = () => {
               </div>
             ))}
 
-            {/* Smaller projects: a list card, always rendered last */}
-            <div
-              className={["project-card", fillClass, "mini-projects-card"]
-                .filter(Boolean)
-                .join(" ")}
-              style={{ animationDelay: `${projects.length * 0.1}s` }}
-            >
-              <div className="card-header">
-                <h3 className="card-title">Other Projects and Coding</h3>
-                <span className="source-badge misc">misc</span>
-              </div>
-              <div className="mini-projects-body">
-                <ul className="mini-projects-list">
-                  {miniProjects.map((mini) => (
-                    <li key={mini.title} className="mini-project-row">
-                      <span className="mini-project-title">{mini.title}</span>
-                      <div className="mini-project-tech">
-                        {mini.technologies.map((tech, i) => {
-                          let hue = Math.floor(Math.random() * 360) - 20;
-                          if (hue < 0) hue += 360;
-                          const pastelColor = `hsl(${hue}, 70%, 85%)`;
-                          return (
-                            <span
-                              key={i}
-                              className="tech-tag"
-                              style={{
-                                background: pastelColor,
-                                color: "#222",
-                                borderColor: pastelColor,
-                              }}
-                            >
-                              {tech}
-                            </span>
-                          );
-                        })}
-                      </div>
-                      <a
-                        href={mini.githubUrl}
-                        className="action-btn github-btn"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View ${mini.title} on GitHub`}
-                      >
-                        <i className="fab fa-github"></i>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            {/* List-style cards, always rendered last */}
+            {listCard(
+              "Recent Open Source Contributions",
+              "open",
+              "open source",
+              contributions,
+              projects.length,
+            )}
+            {listCard(
+              "Other Projects and Coding",
+              "misc",
+              "misc",
+              miniProjects,
+              projects.length + 1,
+            )}
           </div>
         </div>
       </div>
