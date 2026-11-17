@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Joseph Kerry — MSc Software Engineering graduate and backend developer based in West Bridgford, Nottingham."
+    />
+    <title>Joseph Kerry — Software Engineer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Joseph Kerry</h1>
+        <div class="tagline">West Bridgford, Nottingham, England</div>
+      </header>
+
+      <nav class="sticky-nav">
+        <a href="#about">About</a> <span class="sep">/</span>
+        <a href="#experience">Experience</a> <span class="sep">/</span>
+        <a href="#education">Education</a> <span class="sep">/</span>
+        <a href="#projects">Projects</a> <span class="sep">/</span>
+        <a href="#open-source">Open Source</a> <span class="sep">/</span>
+        <a href="#skills">Skills</a>
+      </nav>
+
+      <section class="about-text" id="about">
+        <p>
+          <span class="status"
+            >I am currently a Software Engineer at Davis Derby Limited</span
+          >
+        </p>
+        <p>
+          I hold a Masters degree at the distinction level in Software
+          Engineering. My major project focused on ``<a
+            href="https://github.com/Joekrry/EEGCHTB-MScThesis" target="_blank" rel="noopener"
+            >Assessing the Galea Headset on a Benchmark of Deep Learning
+            Architectures and Pre-processing Pipelines for EEG Motor-Imagery
+            Task Classification</a
+          >.''
+        </p>
+
+        <p>
+          You can contact me at:
+          <a href="mailto:Joerkerry@gmail.com">Joerkerry@gmail.com</a>
+        </p>
+        <div class="links links-primary">
+          <a
+            href="Software_Engineer_CV_Joe_Kerry.pdf"
+            target="_blank"
+            rel="noopener"
+            >CV (PDF)</a
+          >
+          <a href="https://github.com/Joekrry" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/joseph-kerry-b6a488272/" target="_blank" rel="noopener"
+            >LinkedIn</a
+          >
+        </div>
+        <div class="links links-secondary">
+          <a href="https://instagram.com/Joekrry" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://joekrry.github.io/previousportfolio/" target="_blank" rel="noopener"
+            >Previous portfolio</a
+          >
+        </div>
+      </section>
+
+      <h2 id="experience">Work Experience</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="org">Davis Derby Limited</span>
+        </div>
+        <div class="entry-role">
+          <span>Software Engineer</span>
+          <span class="dates">Dec 2026 – Present</span>
+        </div>
+        <ul>
+          <li>
+            Java engineer on TruckLog, owning Java development for a fleet and
+            warehouse management system in use on 50,000+ trucks.
+          </li>
+          <li>Maintain TruckLog's legacy system, established in 1995.</li>
+          <li>
+            Work with TruckLog's RFID access-control and impact-detection
+            hardware alongside the software.
+          </li>
+        </ul>
+      </div>
+
+      <h2 id="education">Education</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="org">MSc Software Engineering</span>
+          <span class="location">Distinction</span>
+        </div>
+        <div class="entry-role">
+          <span>Postgraduate degree</span>
+          <span class="dates">Sep 2025 – Sep 2026</span>
+        </div>
+        <details>
+          <summary>Modules</summary>
+          <div class="tags">
+            <span class="tag">Advanced Software Development</span>
+            <span class="tag">Software Design and Development</span>
+            <span class="tag">Software Project Management</span>
+            <span class="tag">Research Methods</span>
+            <span class="tag">System Analysis and Design</span>
+            <span class="tag">Mobile Systems</span>
+          </div>
+        </details>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="org">LLB (Hons) Law with Business</span>
+        </div>
+        <div class="entry-role">
+          <span>Undergraduate degree</span>
+        </div>
+        <details>
+          <summary>Modules</summary>
+          <div class="tags">
+            <span class="tag">Land Law</span>
+            <span class="tag">Applied Legal Knowledge</span>
+            <span class="tag">Investment and Portfolio Management</span>
+            <span class="tag">Law of Trust</span>
+            <span class="tag">Corporate Governance &amp; Risk Management</span>
+            <span class="tag">International Law</span>
+            <span class="tag">Criminal Law and Criminology</span>
+            <span class="tag">Tort Law</span>
+            <span class="tag">Civil Practice &amp; Procedure</span>
+            <span class="tag">Financial Markets &amp; Institutions</span>
+            <span class="tag">Contract Law</span>
+            <span class="tag">Business Analytics</span>
+          </div>
+        </details>
+      </div>
+
+      <h2 id="projects">Projects</h2>
+      <p class="section-intro">
+        Projects with details and GitHub repository access.
+      </p>
+
+      <div class="selected-pub">
+        <div class="pub-title">
+          Masters Dissertation Thesis
+          <span class="annotation flagship">Dissertation</span>
+        </div>
+        <div class="pub-venue">
+          Assessing the Galea Headset on a Benchmark of Deep Learning
+          Architectures and Pre-processing Pipelines for EEG Motor-Imagery Task
+          Classification
+        </div>
+        <div class="pub-desc">
+          I built EEGCHTB, a leakage-safe benchmarking framework, to test how
+          well EEG motor-imagery decoders hold up when moved from dense research
+          montages onto the sparse four-channel montage of the OpenBCI Galea
+          headset. It crosses three models (EEGNet, EEG-Conformer, and my own
+          GRF-Net) with four preprocessing pipelines across the BCI Competition
+          IV-2a and IV-2b datasets, backed by a resumable grid runner and 215
+          tests. I found that the montage mattered more than the architecture:
+          dropping to the Galea montage cost roughly 5 to 15 accuracy points, a
+          Friedman test separated the three models in only 4 of 12 cells, and
+          every model still beat chance. The result points to signal quality and
+          channel coverage, rather than model choice, as the dominant factor.
+        </div>
+        <div class="pub-links">
+          <a href="https://github.com/Joekrry/EEGCHTB-MScThesis" target="_blank" rel="noopener">Code</a>
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Python 3.11+</span><span class="tag">PyTorch</span
+          ><span class="tag">MNE-Python</span><span class="tag">BrainFlow</span
+          ><span class="tag">EEGNet</span><span class="tag">EEG-Conformer</span
+          ><span class="tag">GRF-Net (novel)</span><span class="tag">NumPy</span
+          ><span class="tag">SciPy</span><span class="tag">Scikit-learn</span
+          ><span class="tag">Docker</span><span class="tag">pytest</span>
+        </div>
+      </div>
+
+      <div class="selected-pub">
+        <div class="pub-title">
+          Convolutional Vision Transformer – Temporal Convolutional Network
+          (CvT-TCN) for EEG Motor Imagery Classification
+          <span class="annotation deployed">Open source</span>
+        </div>
+        <div class="pub-venue">
+          Independent CvT-TCN experiment for EEG motor imagery classification.
+        </div>
+        <div class="pub-desc">
+          I built a Convolutional Vision Transformer in PyTorch to deepen my
+          understanding of attention-based models on 4-class EEG motor imagery,
+          using the EEGMMIDB dataset. It matched EEGNet's subject-independent
+          accuracy end-to-end, and I visualised the attention maps and filter
+          activations to confirm they aligned with known motor-imagery
+          neurophysiology.
+        </div>
+        <div class="pub-links">
+          <a href="https://github.com/Joekrry/CVTTCN" target="_blank" rel="noopener">Code</a>
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Python</span><span class="tag">PyTorch</span
+          ><span class="tag">EEGMMIDB</span><span class="tag">Matplotlib</span
+          ><span class="tag">Jupyter Notebooks</span>
+        </div>
+      </div>
+
+      <div class="selected-pub">
+        <div class="pub-title">
+          ParticlePipe <span class="annotation deployed">Open source</span>
+        </div>
+        <div class="pub-venue">
+          High-energy-physics data pipeline and analysis platform (LHC Run 3
+          simulation).
+        </div>
+        <div class="pub-desc">
+          I built ParticlePipe in pure Python (no ROOT or NumPy) to work through
+          the physics and engineering of a collider data pipeline from first
+          principles. A seeded Monte Carlo generator simulates LHC particle
+          collisions and a three-level asynchronous trigger reconstructs them,
+          recovering the Z boson and J/ψ mass peaks at their expected energies
+          through a CLI and a streaming FastAPI service.
+        </div>
+        <div class="pub-links">
+          <a href="https://github.com/Joekrry/particlepipe" target="_blank" rel="noopener">Code</a>
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Python 3.11+</span><span class="tag">FastAPI</span
+          ><span class="tag">Uvicorn</span><span class="tag">Pydantic</span
+          ><span class="tag">asyncio</span><span class="tag">aiosqlite</span
+          ><span class="tag">pytest</span>
+        </div>
+      </div>
+
+      <div class="selected-pub">
+        <div class="pub-title">
+          CaMLL <span class="annotation deployed">Open source</span>
+        </div>
+        <div class="pub-venue">
+          Classical Machine Learning / Deep Learning library written in raw C11.
+        </div>
+        <div class="pub-desc">
+          I started CaMLL to build a strong, code-level understanding of machine
+          learning by implementing it from scratch in raw C11 with zero
+          dependencies. It provides hand-written row-major matrix and vector
+          types over a custom arena allocator, a seeded xorshift PRNG, CSV
+          loading with train/test splits and standardisation, and linear
+          regression via both the closed-form normal equation and gradient
+          descent, with the longer-term aim of serving as a native, low-latency
+          analysis layer for ParticlePipe.
+        </div>
+        <div class="pub-links">
+          <a href="https://github.com/Joekrry/CaMLL" target="_blank" rel="noopener">Code</a>
+        </div>
+        <div class="pub-tags">
+          <span class="tag">C11</span
+          ><span class="tag">Arena allocator (mmap)</span
+          ><span class="tag">GCC</span><span class="tag">Makefile</span
+          ><span class="tag">Static library</span>
+        </div>
+      </div>
+
+      <div class="selected-pub">
+        <div class="pub-title">
+          Cloud Load Balancer
+          <span class="annotation deployed">Open source</span>
+        </div>
+        <div class="pub-venue">
+          Implementation and validation of a distributed cloud load balancer
+          with encrypted file storage.
+        </div>
+        <div class="pub-desc">
+          I built a Java distributed-cloud simulator to understand how storage
+          systems encrypt, chunk, and distribute files across Docker containers
+          at scale. A load balancer applies FCFS, Round Robin, and Priority
+          scheduling while an MQTT host manager scales containers on demand,
+          with dual SQLite/MySQL databases for offline resilience and
+          centralised storage, all backed by a Jenkins CI/CD pipeline and a
+          self-hosted Git server.
+        </div>
+        <div class="pub-links">
+          <a href="https://github.com/Joekrry/DistributedCloudLoadBalancer" target="_blank" rel="noopener"
+            >Code</a
+          >
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Java20+</span><span class="tag">JavaFX</span
+          ><span class="tag">Apache Maven</span><span class="tag">Docker</span
+          ><span class="tag">Eclipse Mosquitto (MQTT)</span
+          ><span class="tag">SQLite</span><span class="tag">MySQL8</span
+          ><span class="tag">Jenkins</span>
+        </div>
+      </div>
+
+      <div class="selected-pub">
+        <div class="pub-title">
+          vimline-errors <span class="annotation deployed">Open source</span>
+        </div>
+        <div class="pub-venue">
+          An open source inline error diagnostic tool for native Vim 9.0+.
+        </div>
+        <div class="pub-desc">
+          I wrote vimline-errors as a self-contained inline diagnostic tool for
+          native Vim 9.0+, running each language's own compiler or interpreter
+          in check-only mode to avoid per-language linters or language servers.
+          It supports Python, C, C++, JavaScript, Bash, Perl, and Lua, and new
+          languages can be added through a config edit rather than code changes.
+        </div>
+        <div class="pub-links">
+          <a href="https://github.com/Joekrry/vimline-errors" target="_blank" rel="noopener">Code</a>
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Vim Script 9.0+</span
+          ><span class="tag">Compilers</span
+          ><span class="tag">Interpreters</span
+          ><span class="tag">+textprop</span><span class="tag">ale</span>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>Other Projects and Coding</h3>
+          <ul class="pub-list">
+            <li>
+              <b>minimaFetch</b>
+              <a href="https://github.com/Joekrry/minimaFetch" target="_blank" rel="noopener">Code</a>
+              <span class="pub-tags"
+                ><span class="tag">Shell</span
+                ><span class="tag">Arch Linux</span></span
+              >
+            </li>
+            <li>
+              <b>GeometryWars2D</b>
+              <a
+                href="https://github.com/Joekrry/Geometry-Wars-2D-Remake-in-Xna" target="_blank" rel="noopener"
+                >Code</a
+              >
+              <span class="pub-tags"
+                ><span class="tag">C#</span
+                ><span class="tag">Xna Framework</span
+                ><span class="tag">Monogame</span></span
+              >
+            </li>
+            <li>
+              <b>TextEditor</b>
+              <a href="https://github.com/Joekrry/TextEditor" target="_blank" rel="noopener">Code</a>
+              <span class="pub-tags"
+                ><span class="tag">C#</span><span class="tag">.NET 8</span
+                ><span class="tag">Console Application</span></span
+              >
+            </li>
+            <li>
+              <b>MrMandelbrot</b>
+              <a href="https://github.com/Joekrry/MrMandelbrot" target="_blank" rel="noopener">Code</a>
+              <span class="pub-tags"
+                ><span class="tag">C</span><span class="tag">SDL2</span></span
+              >
+            </li>
+            <li>
+              <b>CoverLetterGenerator</b>
+              <a href="https://github.com/Joekrry/CoverLetterGenerator" target="_blank" rel="noopener">Code</a>
+              <span class="pub-tags"
+                ><span class="tag">JavaScript</span
+                ><span class="tag">React</span><span class="tag">GoLang</span
+                ><span class="tag">OpenAI API</span
+                ><span class="tag">Postman</span></span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 id="open-source">Open Source Contributions</h3>
+          <ul class="pub-list">
+            <li>
+              Fixed an out-of-bounds write in <code>mmap.__setitem__</code>.
+              <span class="venue">CPython</span>
+              <span class="annotation deployed">Merged</span>
+              <a href="https://github.com/python/cpython/pull/157438" target="_blank" rel="noopener">PR</a>
+              <span class="pub-tags"><span class="tag">C</span></span>
+            </li>
+            <li>
+              Set <code>.name</code> and <code>.obj</code> on AttributeError
+              from descriptor <code>__set__</code>.
+              <span class="venue">CPython</span>
+              <span class="annotation production">Open</span>
+              <a href="https://github.com/python/cpython/pull/158512" target="_blank" rel="noopener">PR</a>
+              <span class="pub-tags"><span class="tag">C</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="skills">Technical Skills</h2>
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <div>
+          <span class="tag">Python</span><span class="tag">C</span
+          ><span class="tag">Java</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Frontend</span>
+        <div>
+          <span class="tag">HTML</span><span class="tag">CSS</span
+          ><span class="tag">JavaScript</span><span class="tag">React</span
+          ><span class="tag">Vite</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Backend</span>
+        <div>
+          <span class="tag">Node.js</span><span class="tag">REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Databases</span>
+        <div>
+          <span class="tag">SQL</span><span class="tag">SQLite</span
+          ><span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">DevOps &amp; Tools</span>
+        <div>
+          <span class="tag">Docker</span><span class="tag">Git</span
+          ><span class="tag">GitHub</span><span class="tag">Postman</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Machine Learning / AI</span>
+        <div>
+          <span class="tag">PyTorch</span><span class="tag">NumPy</span
+          ><span class="tag">MNE-Python</span><span class="tag">pytest</span>
+        </div>
+      </div>
+
+      <h2 id="personal">Outside of Code</h2>
+      <p>
+        I'm a prolific gamer, I also do indoor bouldering, play both the
+        acoustic and electric guitar and I love travelling with my girlfriend.
+        I'm a huge fan of learning and I love a challenge that makes me feel
+        like I have no idea what I'm doing!
+      </p>
+
+      <div class="more-pointer">
+        <b>Get in touch:</b>
+        <a href="mailto:Joerkerry@gmail.com">Joerkerry@gmail.com</a>
+        <div class="copyright">
+          © <span id="year">2026</span> Joseph Kerry. All rights reserved.
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Pastel colour per tech tag, regenerated each load. Same generator as Projects.jsx.
+      document
+        .querySelectorAll(".pub-tags .tag, .skill-row .tag, details .tag")
+        .forEach((tag) => {
+          let hue = Math.floor(Math.random() * 360) - 20;
+          if (hue < 0) hue += 360;
+          const pastelColor = `hsl(${hue}, 70%, 85%)`;
+          tag.style.background = pastelColor;
+          tag.style.borderColor = pastelColor;
+          tag.style.color = "#222";
+        });
+    </script>
+  </body>
+</html>
